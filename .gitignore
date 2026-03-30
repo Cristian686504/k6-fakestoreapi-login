@@ -1,0 +1,10 @@
+# Dependencies
+node_modules/
+
+# k6 reports (except .gitkeep)
+reports/*
+!reports/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
