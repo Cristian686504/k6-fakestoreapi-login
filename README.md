@@ -109,13 +109,13 @@ Los usuarios se cargan desde `data/users.csv`:
 
 | Usuario | Contraseña | Estado en la API |
 |---|---|---|
-| donero | evedon | ❌ Credenciales inválidas (401) |
+| donero | ewedon | ✅ Login exitoso (201) |
 | kevinryan | kev02937@ | ✅ Login exitoso (201) |
 | johnd | m38rmF$ | ✅ Login exitoso (201) |
 | derek | jklg*_56 | ✅ Login exitoso (201) |
 | mor_2314 | 83r5^_ | ✅ Login exitoso (201) |
 
-> **Nota:** El usuario `donero` tiene credenciales inválidas según la API. La respuesta HTTP 401 es esperada y no se contabiliza como error de servicio.
+> **Nota:** Todos los usuarios tienen credenciales válidas. Solo el código HTTP 201 es considerado como respuesta exitosa.
 
 ---
 
@@ -130,9 +130,9 @@ Los usuarios se cargan desde `data/users.csv`:
 
 | Check | Descripción |
 |---|---|
-| `status is 201 or 401` | El código de respuesta es 201 (login OK) o 401 (credenciales inválidas) |
+| `status is 201` | El código de respuesta es 201 (login exitoso) |
 | `response time < 1500ms` | El tiempo de respuesta individual es menor a 1500ms |
-| `valid credentials return token` | Las respuestas exitosas contienen un JWT token |
+| `response body contains token` | La respuesta contiene un JWT token |
 | `no server errors (5xx)` | No se reciben errores de servidor |
 
 ---
@@ -166,6 +166,5 @@ Content-Type: application/json
 }
 ```
 
-**Respuestas esperadas:**
+**Respuesta esperada:**
 - `201 Created` — Login exitoso, retorna `{ "token": "<JWT>" }`
-- `401 Unauthorized` — Credenciales inválidas
