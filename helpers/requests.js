@@ -13,8 +13,11 @@ export function login(username, password) {
     password: password,
   });
 
-  return http.post(LOGIN_ENDPOINT, payload, {
+  const response = http.post(LOGIN_ENDPOINT, payload, {
     headers: HEADERS,
     timeout: '60s',
+    tags: { name: 'login' },
   });
+
+  return response;
 }

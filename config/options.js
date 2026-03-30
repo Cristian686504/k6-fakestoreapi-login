@@ -1,11 +1,14 @@
 import { SharedArray } from 'k6/data';
 import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
+import http from 'k6/http';
 
 const BASE_URL = 'https://fakestoreapi.com';
 
 const TARGET_TPS = 20;
 const MAX_RESPONSE_TIME_MS = 1500;
 const MAX_ERROR_RATE_PERCENT = 3;
+
+http.setResponseCallback(http.expectedStatuses(201, 401));
 
 export const options = {
   scenarios: {
