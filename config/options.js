@@ -8,7 +8,8 @@ const TARGET_TPS = 20;
 const MAX_RESPONSE_TIME_MS = 1500;
 const MAX_ERROR_RATE_PERCENT = 3;
 
-http.setResponseCallback(http.expectedStatuses(201, 401));
+
+http.setResponseCallback(http.expectedStatuses(201));
 
 export const options = {
   scenarios: {
